@@ -7,10 +7,22 @@ import org.junit.jupiter.api.Test;
 public class BrokenFloorTest {
 
 private int getMinimalBrokenFloor(BallBrokenFloor bbf) {
-    //TODO
 //Using only method checkFloor to find out minimal broken floor by applying 
 //binary search algorithm
- return -1;
+int downFloor = 0;
+int uperFloor = Integer.MAX_VALUE;
+int middle = (uperFloor + downFloor) / 2;
+while (downFloor <= uperFloor) {
+    try {
+        bbf.checkFloor(middle);
+        downFloor = middle + 1;
+    } catch (Exception e) {
+        uperFloor = middle -1;
+    }
+    middle = (uperFloor + downFloor) / 2;
+}
+
+ return downFloor;
 }
 @Test
 void minimalBrokenFloorTest() {
