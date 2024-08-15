@@ -1,2 +1,3 @@
-#  HW 14 solution
-## written method getMinBrokenFloor in the class BrokenFloorTest
+# CW 18
+## RangeIterator clas illustrating Iterator design pattern
+## testIterator method for testing the RangeIterator
