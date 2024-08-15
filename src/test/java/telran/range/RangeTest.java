@@ -29,15 +29,7 @@ public class RangeTest {
     }
     @Test
     void iteratorTest() {
-        Range rangeIt = Range.getRange(0, 2);
-        Iterator<Integer> it = rangeIt.iterator();
-        Integer [] expected = {0, 1, 2};
-        Integer [] actual = new Integer[expected.length];
-        int index = 0;
-        while(it.hasNext()) {
-            actual[index++] = it.next();
-        }
-        assertArrayEquals(expected, actual);
-        assertThrowsExactly(NoSuchElementException.class, it::next);
+        //TODO
+        //different test cases
     }
 }
