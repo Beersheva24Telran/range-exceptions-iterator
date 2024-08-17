@@ -29,7 +29,32 @@ public class RangeTest {
     }
     @Test
     void iteratorTest() {
-        //TODO
-        //different test cases
+        Range range = Range.getRange(1, 3);
+        runTest(new Integer[] {1,2,3}, range);
+    }
+    @Test
+    void iteratorPredicateMatchTest() {
+        Range range = Range.getRange(1, 3);
+        range.setPredicate(n -> n % 2 == 0); 
+        runTest(new Integer[]{2}, range);
+        range.setPredicate(n -> n % 2 != 0); 
+        runTest(new Integer[]{1, 3}, range);
+
+    }
+    @Test
+    void iteratorPredicateNoMatchTest() {
+        range.setPredicate(n -> n > MAX);
+        runTest(new Integer[0], range);
+
+    }
+    private void runTest(Integer[] expected, Range range) {
+        Integer [] actual = new Integer[expected.length];
+        Iterator<Integer> it = range.iterator();
+        int index = 0;
+        while(it.hasNext()) {
+            actual[index++] = it.next();
+        }
+        assertArrayEquals(expected, actual);
+        assertThrowsExactly(NoSuchElementException.class, it::next);
     }
 }
